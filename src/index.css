@@ -1,0 +1,13 @@
+@import url(./blocks/header.css);
+@import url(./blocks/main.css);
+@import url(./blocks/footer.css);
+@import url(./blocks/shop.css);
+@import url(./blocks/history.css);
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url(./vendor/fonts/Montserrat-Italic-VariableFont_wght.ttf);
+}
+#root {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}

@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: #51262c;
+}
+
+.header__logo {
+  width: 20%;
+  height: auto;
+}
+
+.header__nav {
+  align-content: center;
+}
+
+.header__nav-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+  align-items: center;
+  color: black;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.header__nav-icon {
+  display: flex;
+  align-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}

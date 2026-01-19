@@ -1,0 +1,18 @@
+.shop__container_promotion {
+  background-image: url("../images/CML_0123\ Ana.png");
+  background-size: cover;
+  background-position: center 190%;
+  padding: 10%;
+  background-attachment: fixed;
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
+  color: #ebbb28;
+  text-align: start;
+}
+
+.shop__container_products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%; /* Ocupa todo el ancho del 1fr del grid */
+  height: 250px; /* Define una altura fija para que todas las cartas sean iguales */
+  object-fit: cover; /* ¡ESTA ES LA CLAVE! Recorta la imagen para que llene el espacio sin deformarse */
+}

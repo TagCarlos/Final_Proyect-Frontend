@@ -1,0 +1,51 @@
+.history__header {
+  background-image: url(https://images.pexels.com/photos/94843/pexels-photo-94843.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.history__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+  gap: 60px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 20px;
+}
+
+.history__item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.history__content {
+  flex: 1;
+  padding: 20px;
+}
+
+.history__number {
+  font-size: 4rem;
+  color: #d4af37;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.history__image {
+  flex: 1;
+  text-align: center;
+}
+
+.history__image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
