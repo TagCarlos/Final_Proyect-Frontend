@@ -3,6 +3,15 @@ import GoogleLoginButton from "./GoogleLoginButton";
 
 function Header(props) {
   const location = useLocation();
+  const handleSuccess = (user) => {
+    console.log("Bienvenido:", user.name);
+    // Aquí guardas el token en tu estado o base de datos
+  };
+
+  const handleError = (error) => {
+    console.error("Hubo un fallo:", error);
+  };
+
   return (
     <div className="header">
       <>
@@ -76,7 +85,10 @@ function Header(props) {
           <img src="src/images/icons/shopping_bag.svg" alt="bolsa de compra" />
         </a> */}
         <a>
-          <GoogleLoginButton />
+          <GoogleLoginButton
+            onLoginSuccess={handleSuccess}
+            onLoginError={handleError}
+          />
         </a>
       </div>
     </div>

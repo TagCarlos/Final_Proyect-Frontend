@@ -3,47 +3,46 @@ class GoogleAuth {
         this.clientId = clientId;
     }
 
-    // Inicializar Google Auth
-    async initializeGoogleAuth() {
-        return new Promise((resolve) => {
-            window.gapi.load('auth2', () => {
-                window.gapi.auth2.init({
-                    client_id: this.clientId,
-                }).then(() => {
-                    resolve(window.gapi.auth2.getAuthInstance());
+    // Inicializar el cliente (Reemplaza a gapi.auth2.init)
+    initializeGoogleAuth(callback) {
+        window.google.accounts.id.initialize({
+            client_id: this.clientId,
+            callback: (response) => {
+                // El perfil ahora viene codificado en el JWT (response.credential)
+                const payload = this._decodeJwt(response.credential);
+                callback({
+                    id: payload.sub,
+                    name: payload.name,
+                    email: payload.email,
+                    imageUrl: payload.picture,
+                    token: response.credential
                 });
-            });
+            }
         });
     }
 
-    // Iniciar sesión con Google
-    async signInWithGoogle() {
-        try {
-            const authInstance = await this.initializeGoogleAuth();
-            const user = await authInstance.signIn();
-            const profile = user.getBasicProfile();
-
-            return {
-                id: profile.getId(),
-                name: profile.getName(),
-                email: profile.getEmail(),
-                imageUrl: profile.getImageUrl(),
-                token: user.getAuthResponse().id_token
-            };
-        } catch (error) {
-            throw new Error('Error al iniciar sesión con Google');
-        }
+    // Renderizar el botón oficial (Reemplaza a signInWithGoogle programático)
+    renderButton(elementId) {
+        window.google.accounts.id.renderButton(
+            document.getElementById(elementId),
+            { theme: "outline", size: "large" }
+        );
     }
 
     // Cerrar sesión
-    async signOut() {
-        const authInstance = await this.initializeGoogleAuth();
-        return authInstance.signOut();
+    signOut() {
+        window.google.accounts.id.disableAutoSelect();
+        // Nota: GIS no tiene un "signOut" global que limpie cookies de Google, 
+        // simplemente deshabilita la selección automática en tu web.
+    }
+
+    _decodeJwt(token) {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        return JSON.parse(window.atob(base64));
     }
 }
 
-// Tu Client ID de Google (lo obtienes del paso 1)
-const GOOGLE_CLIENT_ID = "721753213668-gb1ln7nmteqjo1cd4ftj4506hqscrkss.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "72175321368-gb1ln7nmteqjo1cd4ftj4506hqscrkss.apps.googleusercontent.com";
 const googleAuth = new GoogleAuth(GOOGLE_CLIENT_ID);
-
 export default googleAuth;
