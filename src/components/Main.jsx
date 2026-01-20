@@ -4,34 +4,41 @@ function Main() {
   return (
     <div className="main" id="inicio">
       <section className="main__history">
-        {/* <h3 className="main__title">THE VISIONARY</h3> */}
-        <h2 className="main__subtitle">
-          Conoce a la artista detrás de la maestría
-        </h2>
-        <h3 className="main__description">
-          En la búsqueda constante de formas de expresión que plasmen la
-          experiencia humana, he encontrado en la joyería una forma de
-          transmitir ideas, sensaciones y visiones para compartirlas con el
-          mundo.
-        </h3>
-        <Modals></Modals>
-        <button className="main__button">Leer historia</button>
-        <img
-          src="src\images\IMG_4841 Ana.png"
-          alt="imagen de la artista"
-          className="main__image"
-        />
+        <div className="main__history_container">
+          <div className="main__history_content">
+            <h2 className="main__history_title">
+              Conoce a la artista detrás de la maestría
+            </h2>
+            <p className="main__history_description">
+              En la búsqueda constante de formas de expresión que plasmen la
+              experiencia humana, he encontrado en la joyería una forma de
+              transmitir ideas, sensaciones y visiones para compartirlas con el
+              mundo.
+            </p>
+            <Modals></Modals>
+            <a href="/about">
+              <button className="main__history_button">Leer historia</button>
+            </a>
+          </div>
+
+          <div className="main__history_image-container">
+            <img
+              src="https://previews.dropbox.com/p/thumb/AC6fidAUDNuszNQu2KwCgu811RJ9uxsWIWDCgASKZET7DuHLlT5TKsdYmvPQNJfPZccQKPkdbaMGOvNhUE0WJLX7JFlQYehXr_5t3GgFNq1501A2-Bt0hPOwsy5N7HbGtxFTJ0iCq1gvFfsA5g_gS0EDYtnbe95LdFLVZcGKUMWMt81m_EoVHGBVeN5FqzaexYBcHJVmiN1RmSwDlbyz2bvdcM2RIwT5UyvG96JJzpLRVIAqDrh6dgGE9qITx7-6R6HoIVQXoDYZBWg9g7h27S1vOG9nN0tkhUgPXhKDuarA4VBIYhZK4FrmAV4dnCysiAY/p.png"
+              alt="imagen de la artista"
+              className="main__history_image"
+            />
+          </div>
+        </div>
       </section>
 
       <section className="main__values">
-        {/* aqui se puede agregar un parrafo que diga "garantia de Narcisa" */}
         <img
           className="main__values-image"
           src="src/images/icons/herramientas.png"
           alt="herramientas"
         />
         <img
-          className="main__values-image icon"
+          className="main__values-image main__values-image-icon"
           src="src/images/icons/mundo.png"
           alt="mundo"
         />
@@ -41,7 +48,6 @@ function Main() {
           alt="verificado"
         />
         <h3 className="main__values-title">Artesanal</h3>{" "}
-        {/* podria ser tambien "De autor o Manufacturado"  */}
         <h3 className="main__values-title">Procedencia ética</h3>
         <h3 className="main__values-title">Garantía de por vida</h3>
         <p className="main__values-paragraph">
@@ -55,75 +61,131 @@ function Main() {
         </p>
       </section>
 
-      <section>
-        <div className="main__collection">
-          <h2 id="colecciones">Colecciones destacadas</h2>
-          <button>Ver todas</button>
+      <section className="main__featured-collections">
+        <div className="main__collections_header">
+          <h2 className="main__collections_title" id="colecciones">
+            Colecciones destacadas
+          </h2>
+          <a href="/shop">
+            <button className="main__collection_button">Ver todas</button>
+          </a>
         </div>
 
-        <div className="main__collention-images">
-          <img
-            height={250}
-            src="src\images\CML_0003 Ana.png"
-            alt="colecion 1"
-          />
-          <img
-            height={200}
-            src="src\images\CML_0025 Ana.png"
-            alt="colecion 2"
-          />
-          <img
-            height={250}
-            src="src\images\CML_0084 Ana.png"
-            alt="colecion 3"
-          />
-          <h3>Proélefsi</h3>
-          <h3>Mageía</h3>
-          <h3>Iereía</h3>
+        <div className="main__collections_grid">
+          <div className="main__collection_item">
+            <div className="main__collection_image-container">
+              <img
+                src="src/images/CML_0003 Ana.png"
+                alt="Colección Proélefsi"
+                className="main__collection_image"
+              />
+            </div>
+            <div className="main__collection_info">
+              <h3 className="main__collection_name">Proélefsi</h3>
+              <p className="main__collection_subtitle">Origen</p>
+            </div>
+          </div>
+
+          <div className="main__collection_item">
+            <div className="main__collection_image-container">
+              <img
+                src="src/images/CML_0025 Ana.png"
+                alt="Colección Mageía"
+                className="main__collection_image"
+              />
+            </div>
+            <div className="main__collection_info">
+              <h3 className="main__collection_name">Mageía</h3>
+              <p className="main__collection_subtitle">Magia</p>
+            </div>
+          </div>
+
+          <div className="main__collection_item">
+            <div className="main__collection_image-container">
+              <img
+                src="src/images/CML_0084 Ana.png"
+                alt="Colección Iereía"
+                className="main__collection_image"
+              />
+            </div>
+            <div className="main__collection_info">
+              <h3 className="main__collection_name">Iereía</h3>
+              <p className="main__collection_subtitle">Sacerdotisa</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section>
-        <div className="main__arrival">
-          <h2 className="main__arrival-title">Novedades</h2>
-          <button>
-            <img src="src/images/icons/flecha-izquierda.png" alt="izquierda" />
-          </button>
-          <button>
-            <img src="src/images/icons/flecha-derecha.png" alt="derecha" />
-          </button>
+      <section className="main__new-arrivals">
+        <div className="main__arrivals_header">
+          <h2 className="main__arrivals_title">Novedades</h2>
+          <div className="main__arrivals_navigation">
+            {/* <button className="arrivals__nav-btn arrivals__nav-btn--prev">
+              <img src="src/images/icons/flecha-izquierda.png" alt="anterior" />
+            </button>
+            <button className="arrivals__nav-btn arrivals__nav-btn--next">
+              <img src="src/images/icons/flecha-derecha.png" alt="siguiente" />
+            </button> */}
+          </div>
         </div>
-      </section>
 
-      <section className="main__arrival-images">
-        <img
-          height={200}
-          src="src\images\CML_0061 Ana.png"
-          alt="nuevos anillos"
-        />
-        <img
-          height={200}
-          src="src\images\CML_0110 Ana.png"
-          alt="nuevos aretes"
-        />
-        <img
-          height={200}
-          src="src\images\CML_0227 Ana.png"
-          alt="nuevos collares"
-        />
-        <img
-          height={200}
-          src="src\images\CML_0130 Ana.png"
-          alt="nuevos aretes"
-        />
-        <h2>Colección de Proélefsi</h2>
-        <h2>Colección de Mageía</h2>
-        <h2>Colección de Iereía </h2>
-        <h2>Colección de Efchés</h2>
-        <p className="main__arrival-price">$250</p>
-        <p className="main__arrival-price">$180</p>
-        <p className="main__arrival-price">$300</p>
-        <p className="main__arrival-price">$170</p>
+        <div className="main__arrivals_grid">
+          <div className="main__product_card">
+            <div className="main__product_image-container">
+              <img
+                src="src/images/CML_0061 Ana.png"
+                alt="Colección de Proélefsi"
+                className="main__product_image"
+              />
+            </div>
+            <div className="main__product_info">
+              <h3 className="main__product_name">Colección de Proélefsi</h3>
+              <p className="main__product_price">$250</p>
+            </div>
+          </div>
+
+          <div className="main__product_card">
+            <div className="main__product_image-container">
+              <img
+                src="src/images/CML_0110 Ana.png"
+                alt="Colección de Mageía"
+                className="main__product_image"
+              />
+            </div>
+            <div className="main__product_info">
+              <h3 className="main__product_name">Colección de Mageía</h3>
+              <p className="main__product_price">$180</p>
+            </div>
+          </div>
+
+          <div className="main__product_card">
+            <div className="main__product_image-container">
+              <img
+                src="src/images/CML_0227 Ana.png"
+                alt="Colección de Iereía"
+                className="main__product_image"
+              />
+            </div>
+            <div className="main__product_info">
+              <h3 className="main__product_name">Colección de Iereía</h3>
+              <p className="main__product_price">$300</p>
+            </div>
+          </div>
+
+          <div className="main__product_card">
+            <div className="main__product_image-container">
+              <img
+                src="src/images/CML_0130 Ana.png"
+                alt="Colección de Efchés"
+                className="main__product_image"
+              />
+            </div>
+            <div className="main__product_info">
+              <h3 className="main__product_name">Colección de Efchés</h3>
+              <p className="main__product_price">$170</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="main__email">

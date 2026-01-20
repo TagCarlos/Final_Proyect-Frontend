@@ -3,39 +3,20 @@ import Footer from "./Footer";
 export default function History(params) {
   return (
     <>
-      {/* <header>
-        <img src="" alt="logo narcisa" />
-        <a href="Proélefsi"></a>
-        <a href="Mageía"></a>
-        <a href="Iereía"></a>
-        <a href="Efchés"></a>
-        <>
-          <a href="">
-            <img src="src/images/icons/search.svg" alt="buscador" />
-          </a>
-          <a>
-            <img
-              src="src/images/icons/shopping_bag.svg"
-              alt="bolsa de compra"
-            />
-          </a>
-          <a>
-            <img src="src/images/icons/profile.svg" alt="perfil" />
-          </a>
-        </>
-      </header> */}
-
       <main>
         <section className="history__header" id="historia">
-          <h3>Arte en metal</h3>
-          <h2>Nuestras Historias</h2>
+          <h3 className="history__header_title">Arte en metal</h3>
+          <h2 className="history__header_subtitle">
+            Nuestras{" "}
+            <span className="history__header_subtitle-cursive">Historias</span>
+          </h2>
           <p>
             Cada pieza es un capítulo. Descubre el origen, la inspiración y el
             alma detrás de nuestras colecciones más icónicas.
           </p>
         </section>
 
-        <section>
+        <section className="history__description">
           <h2>
             "La joyería no es solo un adorno, es una
             <span>extensión del alma." </span>
@@ -164,7 +145,6 @@ export default function History(params) {
           </div>
         </section>
       </main>
-      {/*  <Footer></Footer> */}
     </>
   );
 }

@@ -2,27 +2,91 @@ import Footer from "./Footer";
 import { useState } from "react";
 
 export default function Shop(params) {
+  const [filtros, setFiltros] = useState({
+    categorias: [],
+    materiales: [],
+    colecciones: [],
+    precioMin: 0,
+    precioMax: 5000,
+  });
+
+  const handleCategoriaSeleccionada = (categoria) => {
+    setFiltros((prevFiltros) => {
+      const nuevasCategorias = prevFiltros.categorias.includes(categoria)
+        ? prevFiltros.categorias.filter((cat) => cat !== categoria)
+        : [...prevFiltros.categorias, categoria];
+
+      return {
+        ...prevFiltros,
+        categorias: nuevasCategorias,
+      };
+    });
+  };
+
   const productos = [
     {
       nombre: "Proélefsi",
       precio: 1250.0,
       categoria: "anillos",
       material: "plata",
-      imagen: "srcimagesCML_0003 Ana.png",
+      imagen: "src/images/CML_0003 Ana.png",
     },
+    {
+      nombre: "Proélefsi",
+      precio: 850.0,
+      categoria: "aretes",
+      material: "plata",
+      imagen: "src/images/CML_0251 Ana.png",
+    },
+    {
+      nombre: "Proélefsi",
+      precio: 900.0,
+      categoria: "collar",
+      material: "plata",
+      imagen: "src/images/CML_0212 Ana.png",
+    },
+
     {
       nombre: "Mageía",
       precio: 1400.0,
       categoria: "anillos",
       material: "plata",
-      imagen: "srcimagesCML_0025 Ana.png",
+      imagen: "src/images/CML_0025 Ana.png",
+    },
+    {
+      nombre: "Mageía",
+      precio: 950.0,
+      categoria: "aretes",
+      material: "plata",
+      imagen: "src/images/CML_0030 Ana.png",
+    },
+    {
+      nombre: "Mageía",
+      precio: 950.0,
+      categoria: "collar",
+      material: "plata",
+      imagen: "src/images/CML_0227 Ana.png",
     },
     {
       nombre: "Iereía",
       precio: 1150.0,
       categoria: "anillos",
       material: "plata",
-      imagen: "srcimagesCML_0084 Ana.png",
+      imagen: "src/images/CML_0084 Ana.png",
+    },
+    {
+      nombre: "Iereía",
+      precio: 850.0,
+      categoria: "aretes",
+      material: "plata",
+      imagen: "src/images/CML_0068 Ana.png",
+    },
+    {
+      nombre: "Iereía",
+      precio: 900.0,
+      categoria: "collar",
+      material: "plata",
+      imagen: "src/images/CML_0215 Ana.png",
     },
   ];
 
@@ -36,9 +100,17 @@ export default function Shop(params) {
   function applyFilter() {
     let resultados = [...productos];
 
+    if (productosFiltrados) {
+      resultados = resultados.filter((producto) =>
+        producto.nombre
+          .toLowerCase()
+          .includes(productosFiltrados.toLowerCase()),
+      );
+    }
+
     if (busqueda) {
       resultados = resultados.filter((producto) =>
-        producto.nombre.toLowerCase().includes(busqueda.toLowerCase())
+        producto.nombre.toLowerCase().includes(busqueda.toLowerCase()),
       );
     }
 
@@ -46,7 +118,7 @@ export default function Shop(params) {
       resultados = resultados.filter(
         (producto) =>
           producto.categoria.toLowerCase() ===
-          categoriaSeleccionada.toLowerCase()
+          categoriaSeleccionada.toLowerCase(),
       );
     }
 
@@ -54,7 +126,7 @@ export default function Shop(params) {
       resultados = resultados.filter((producto) =>
         producto.material
           .toLowerCase()
-          .includes(materialSeleccionado.toLowerCase())
+          .includes(materialSeleccionado.toLowerCase()),
       );
     }
 
@@ -62,24 +134,30 @@ export default function Shop(params) {
       resultados = resultados.filter(
         (producto) =>
           producto.precio >= rangoPrecios[0] &&
-          producto.precio <= rangoPrecios[1]
+          producto.precio <= rangoPrecios[1],
       );
     }
 
     const avalableMaterials = ["oro, plata, acero"];
+    setProductosFiltrados(resultados);
   }
 
-  const handleCategoriaSeleccionada = () => {
-    setCategoriaSeleccionada;
+  const handleMaterialSeleccionado = (material) => {
+    setMaterialSeleccionado(material);
+    applyFilter();
   };
 
-  const handleMaterialSeleccionado = () => {
-    setMaterialSeleccionado;
+  const handleRangoPrecios = (rango) => {
+    setRangoPrecios(rango);
+    applyFilter();
   };
 
-  const handleRangoPrecios = () => {
-    setRangoPrecios;
+  const handleBusqueda = (texto) => {
+    setBusqueda(texto);
+    applyFilter();
   };
+  const categorias = ["Anillos", "Collares", "Pendientes", "Pulseras"];
+
   return (
     <>
       <main>
@@ -92,17 +170,67 @@ export default function Shop(params) {
 
         <section>
           <div className="shop__container_products">
-            <img src="src\images\icons\filtrar.png" alt="filtro" />
+            {/* <img src="src\images\icons\filtrar.png" alt="filtro" />
             <h2>FILTROS</h2>
             <h2>CATALOGO DE OBRAS</h2>
-            <input type="text" placeholder="Buscar joya..." />
+            <input type="text" placeholder="Buscar joya..." /> */}
 
             <button>Más recientes</button>
             <button onClick={handleCategoriaSeleccionada}>CATEGORIA</button>
             <button onClick={handleMaterialSeleccionado}>MATERIAL</button>
             <button onClick={handleRangoPrecios}>PRECIO</button>
-            <input type="range" />
-            <img
+
+            <div className="shop__products-grid">
+              {productosFiltrados.map((producto) => (
+                <div key={producto.id} className="product-card">
+                  <div className="product-image-container">
+                    <img
+                      src={producto.imagen}
+                      alt={producto.nombre}
+                      className="product-image"
+                    />
+                  </div>
+
+                  <div className="product-content">
+                    <p className="product-category">
+                      {producto.categoria.toUpperCase()}
+                    </p>
+                    <h3 className="product-name">{producto.nombre}</h3>
+                    <p className="product-description">
+                      {producto.descripcion}
+                    </p>
+                    <p className="product-price">${producto.precio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* <div className="product-card">
+              <div className="product-image-container">
+                <img
+                  src={productos[0].imagen}
+                  alt={productos[0].nombre}
+                  className="product-image"
+                />
+                 
+              </div>
+
+              <div className="product-info">
+                <p className="product-category">
+                  {productos[0].categoria.toUpperCase()}
+                </p>
+                <h3 className="product-name">{productos[0].nombre}</h3>
+                <p className="product-description">
+                  Descripción del producto aquí
+                </p>
+                <div className="product-price-container">
+                  <span className="product-price">${productos[0].precio}</span>
+                  <span className="product-status">Envío Gratis</span>
+                </div>
+              </div>
+            </div> */}
+
+            {/* <img
               width={300}
               src="src\images\CML_0120 Ana.png"
               alt="ejemp anillos"
@@ -115,8 +243,8 @@ export default function Shop(params) {
             <img
               width={300}
               src="src\images\CML_0256 Ana.png"
-              alt="ejemp aretes"
-            />
+              alt="ejemp aretes" 
+            /> */}
           </div>
         </section>
       </main>

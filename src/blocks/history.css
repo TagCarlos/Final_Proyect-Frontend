@@ -1,5 +1,7 @@
 .history__header {
-  background-image: url(https://images.pexels.com/photos/94843/pexels-photo-94843.jpeg);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(https://images.pexels.com/photos/94843/pexels-photo-94843.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -11,6 +13,7 @@
 }
 
 .history__item {
+  color: #62393f;
   display: flex;
   align-items: center;
   margin-bottom: 80px;
@@ -48,4 +51,20 @@
   height: auto;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.history__header_title {
+  color: #d4af37;
+}
+
+.history__header_subtitle {
+  font-size: 90px;
+}
+
+.history__header_subtitle-cursive {
+  font-style: italic;
+}
+
+.history__description {
+  color: #62393f;
 }

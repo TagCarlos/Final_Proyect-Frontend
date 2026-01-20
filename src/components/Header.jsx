@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 function Header(props) {
   const location = useLocation();
@@ -66,16 +67,16 @@ function Header(props) {
         </nav>
       </>
       <div className="header__nav-icon">
-        <a>
+        {/* <a>
           <search inputMode="buscar">
             <img src="src/images/icons/search.svg" alt="buscador" />
           </search>
         </a>
         <a>
           <img src="src/images/icons/shopping_bag.svg" alt="bolsa de compra" />
-        </a>
+        </a> */}
         <a>
-          <img src="src/images/icons/profile.svg" alt="perfil" />
+          <GoogleLoginButton />
         </a>
       </div>
     </div>
